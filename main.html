@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Halyn's To-Do List App</title>
+
+        <link rel="stylesheet" href="main.css" />
+        <script src="modules/main.js" defer></script>
+        <!-- <script src="modules/modify.js" defer></script> -->
+    </head>
+
+    <body>
+        <div class="container todo_list_empty">
+            <header>
+                <span class="heading">My TO-DOs</span>
+            </header>
+            <section class="todos">
+                <div class="sort_todos">
+                    <!-- Link this button to sort by name functionality in main.js -->
+                    <button id="sort_todos_btn" onclick="sortToDos()">
+                        Sort by Name
+                    </button>
+                </div>
+                <ul id="todoList"></ul>
+            </section>
+            <footer>
+                <form id="create_new_todo">
+                    <!-- <button class="new_todo_btn" onclick="window.open('modify.html')">
+                        Create New TO-DO
+                    </button> -->
+                    <input type="text" name="new_todo_input" id="new_todo_input" placeholder="Type in your new TO-DO..." value="" />
+                    <button id="new_todo_input_btn" type="submit">Enter</button>
+                </form>
+            </footer>
+        </div>   
+        <script type="text/javascript">
+            for (let i = 0; i < localStorage.length; i++) {
+                var stringAtIndexi = localStorage.getItem(localStorage.key(i));
+                
+                const newTodoItem = document.createElement("li");
+                newTodoItem.setAttribute("class", "todo_item");
+
+                const newModifyBtn = document.createElement("div");
+                newModifyBtn.setAttribute("class", "todo_modify_btn");
+
+                const newTodoBio = document.createElement("span");
+                newTodoBio.setAttribute("class", "todo_bio");
+                newTodoBio.innerText = stringAtIndexi; 
+
+                todoList.appendChild(newTodoItem);
+                newTodoItem.appendChild(newModifyBtn);
+                newTodoItem.appendChild(newTodoBio);
+
+                    newModifyBtn.addEventListener("click", function (element) {
+                        var parents = element.target.parentElement;
+
+                        window.localStorage.removeItem(stringAtIndexi);
+
+                        parents.classList.add("todo-completed"); 
+                        setTimeout(() => {
+                            parents.remove();
+                        }, 400);
+
+                        if (todoList.childNodes.length === 1) {
+                            setTimeout(() => {
+                                container.classList.add("todo_list_empty");
+                            }, 200);
+                        }
+                });
+            }
+        </script> 
+    </body>
+</html>

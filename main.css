@@ -1,0 +1,222 @@
+:root {
+    --primary-color: rgb(234, 237, 243);
+    --secondary-color: rgb(53, 64, 87);
+    --text-color: white;
+    --todo-color: rgb(240, 237, 225);
+    --button-color: rgb(100, 229, 169);
+    --filter: none;
+    --theme-transition: 0s;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    outline: none;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    border: 4px var(--footer-color) solid;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 80vh;
+    border-radius: 20px;
+    overflow: hidden;
+    background: var(--primary-color);
+    transition: var(--theme-transition);
+}
+
+header {
+    position: relative;
+    padding-left: 10%;
+    padding-top: 20%;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 10vh;
+    overflow: hidden;
+    background: var(--secondary-color);
+}
+
+.heading {
+    font-weight: 900;
+    font-size: xx-large;
+    color: var(--text-color);
+}
+
+.todos {
+    margin: 10px 0px;
+    overflow-x: hidden;
+    overflow-y: a;
+    padding-right: 15p;
+}
+
+.sort_todos{
+    text-align: right;
+    margin-right: 10px;
+}
+
+#sort_todos_btn{
+    min-width: 5px;
+    min-height: 5px;
+    background-color: var(--text-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#todoList {
+    padding: 0px;
+}
+
+footer {
+    position: absolute;
+    text-align: center;
+    bottom: 0px;
+    padding: 15px 0px;
+    min-width: 100%;
+    /* background-color: var(--secondary-color); */
+    left: 0px;
+}
+
+/* .new_todo_btn{
+    min-width: 5px;
+    min-height: 5px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    padding: 5px;
+    cursor: pointer;
+    font-size: large;
+} */
+
+#new_todo_input {
+    min-width: 200px;
+    /* margin-right: 5px; */
+    /* margin-top: 10px; */
+    font-size: large;
+    color: var(--secondary-color);
+    background-color: var(--text-color);
+    border: none;
+    border-radius: 10px;
+    border-bottom: 1px var(--secondary-color) solid;
+}
+
+#new_todo_input::placeholder {
+    color: var(--secondary-color);
+    font-size: medium;
+    padding-left: 10px;
+    padding: 5px;
+}
+
+#new_todo_input_btn {
+    min-width: 5px;
+    min-height: 5px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    font-size: medium;
+    border-radius: 20px;
+    outline: none;
+    padding: 5px;
+    cursor: pointer;
+}
+
+
+/* from here, check back after actually inserting some todos */
+.todo_list_empty {
+    transition: 0s;
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+}
+
+.todo_item {
+    list-style-type: none;
+    border: 1px var(--todo-color) solid;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* border-radius: 7px; */
+    margin-bottom: 20px;
+    background-color: var(--todo-color);
+    color: var(--secondary-color);
+}
+
+.todo_item:hover {
+    transition: 0.5s;
+    /* border: 1px rgba(148, 148, 148, 0.63) solid; */
+    cursor: pointer;
+    background-color: var(--text-color);
+
+}
+
+.todo_modify_btn {
+    width: 10px;
+    height: 10px;
+    margin-right: 16px;
+    padding: 3px;
+    border: 2px var(--button-color) solid;
+    /* color: var(--primary-color); */
+    background-position: center;
+    background-size: contain;
+    background-color: var(--button-color);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.todo_bio {
+    font-size: 18px;
+}
+
+
+
+.todo-completed {
+    transition: 0.5s;
+    transform: scale(90%);
+    text-decoration: line-through;
+    color: rgb(150, 150, 150);
+    opacity: 0;
+
+}
+
+.todoCompleted {
+    visibility: hidden;
+}
+
+@media screen and (max-width : 600px) {
+
+    body {
+        margin: 0px;
+        padding: 0px;
+        align-items: flex-start;
+        height: 100vh;
+        background-color: var(--primary-color);
+
+    }
+
+    .container {
+        border: none;
+        border-radius: 0px;
+        width: 100%;
+        height: 93vh;
+        padding: 0px 20px;
+    }
+
+    #new_todo_input {
+        margin-right: 20px;
+    }
+}
